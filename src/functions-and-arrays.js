@@ -122,13 +122,12 @@ function uniquifyArray(array) {
    }
   let cleanArray = [];
   array.forEach (element => {
-       if (cleanArray.includes(element) === true){
-        cleanArray += element;
+       if (cleanArray.indexOf(element) < 0){
+        cleanArray.push(element);
       }
     })
+    return cleanArray;
   }
-
-console.log(uniquifyArray(wordsUnique));
 
 
 

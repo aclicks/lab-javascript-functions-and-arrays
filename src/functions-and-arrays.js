@@ -195,23 +195,38 @@ const matrix = [
   [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
 ];
 
+const mtest = [
+[ 1,  2, 3, 4, 5], 
+[ 1, 20, 3, 4, 5], 
+[ 1, 20, 3, 4, 5], 
+[ 1, 20, 3, 4, 5],
+[ 1,  4, 3, 4, 5]];
+
+
+
 function greatestProduct(array) {
   let biggestProduct = 0;
-  array.forEach (l => {
-    l.forEach (c => {
-      if ((l.at(c))*(l.at(c+1))*(l.at(c+2))*(l.at(c+3)) > biggestProduct){
-        biggestProduct = (l.at(c))*(l.at(c+1))*(l.at(c+2))*(l.at(c+3));
+    for (let lin = 0; lin <= array.length; lin++){ //navega nas linhas
+      for (let col = 0; col <= array[lin].length; col++){ //navega nas colunas
+        //calcula o resultado da linha
+        if (array[lin][col] && array[lin][col+1] && array[lin][col+2] && array[lin][col+3]) {
+          if ((array[lin][col]*array[lin][col+1]*array[lin][col+2]*array[lin][col+3]) >= biggestProduct){
+          biggestProduct = (array[lin][col]*array[lin][col+1]*array[lin][col+2]*array[lin][col+3]);
+          }
+        }
+        //calcula o resultado da coluna
+        if (array[lin][col] && array[lin+1][col] && array[lin+2][col] && array[lin+3][col]) {
+          if ((array[lin][col]*array[lin+1][col]*array[lin+2][col]*array[lin+3][col]) >= biggestProduct){
+            biggestProduct = (array[lin][col]*array[lin+1][col]*array[lin+2][col]*array[lin+3][col]);
+          }
+        }
       }
-      if ((l.at(c))*((l+1).at(c))*((l+2).at(c))*((l+3).at(c)) > biggestProduct){
-        biggestProduct = ((l.at(c))*((l+1).at(c))*((l+2).at(c))*((l+3).at(c)));
-        console.log((l.at(c))*((l+1).at(c))*((l+2).at(c))*((l+3).at(c)))
-      }
-    })
-  })
-  return biggestProduct;
+    return biggestProduct;
+  }
+  //console.log(biggestProduct)
 }
 
-
+console.log(greatestProduct(mtest));
 
 
 

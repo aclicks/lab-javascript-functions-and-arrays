@@ -54,18 +54,27 @@ function sumNumbers(array) {
 }
 
 // Iteration #3.1 Bonus:
-function sum(array) {
+function sum(array){
   let sum2 = 0;
-  function compareAndSum (element){
-    if (element.type === integer){
-      sum2 += element;
-      }
-  }
-  array.forEach(element => compareAndSum(element))
+  array.forEach (element =>{
+    if (typeof(element) === "object" || typeof(element) === "array"){
+      throw new Error("Unsupported data type sir or ma'am"
+      );
+    }
+  })
+  array.forEach(element => {
+    if (typeof(element) === "number"){
+    sum2 += element;
+    }
+    if (typeof(element) === "string"){
+    sum2 += element.length;
+    }
+    if (typeof(element) === "boolean"){
+    sum2 += element;
+    }
+  })
   return sum2;
 }
-
-
 
 // Iteration #4: Calculate the average
 // Level 1: Array of numbers

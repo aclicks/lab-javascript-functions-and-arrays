@@ -121,9 +121,14 @@ function uniquifyArray(array) {
     return null;
    }
   let cleanArray = [];
-  
+  array.forEach (element => {
+       if (cleanArray.includes(element) === true){
+        cleanArray += element;
+      }
+    })
+  }
 
-}
+console.log(uniquifyArray(wordsUnique));
 
 
 

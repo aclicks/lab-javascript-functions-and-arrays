@@ -199,16 +199,19 @@ function greatestProduct(array) {
   let biggestProduct = 0;
   array.forEach (l => {
     l.forEach (c => {
-      if ((array[l,c]*array[(l+1),c]*array[(l+2),c]*array[(l+2),c]) > biggestProduct){
-        console.log(`entrei no if`);
-        biggestProduct = (array[l,c]*array[(l+1),c]*array[(l+2),c]*array[(l+2),c]);
+      if ((l.at(c))*(l.at(c+1))*(l.at(c+2))*(l.at(c+3)) > biggestProduct){
+        biggestProduct = (l.at(c))*(l.at(c+1))*(l.at(c+2))*(l.at(c+3));
       }
-      })
+      if ((l.at(c))*((l+1).at(c))*((l+2).at(c))*((l+3).at(c)) > biggestProduct){
+        biggestProduct = ((l.at(c))*((l+1).at(c))*((l+2).at(c))*((l+3).at(c)));
+        console.log((l.at(c))*((l+1).at(c))*((l+2).at(c))*((l+3).at(c)))
+      }
+    })
   })
-  console.log(biggestProduct);
   return biggestProduct;
 }
-console.log(greatestProduct(matrix));
+
+
 
 
 

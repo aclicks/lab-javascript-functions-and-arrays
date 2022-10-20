@@ -195,8 +195,20 @@ const matrix = [
   [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
 ];
 
-function greatestProduct() {}
-
+function greatestProduct(array) {
+  let biggestProduct = 0;
+  array.forEach (l => {
+    l.forEach (c => {
+      if ((array[l,c]*array[(l+1),c]*array[(l+2),c]*array[(l+2),c]) > biggestProduct){
+        console.log(`entrei no if`);
+        biggestProduct = (array[l,c]*array[(l+1),c]*array[(l+2),c]*array[(l+2),c]);
+      }
+      })
+  })
+  console.log(biggestProduct);
+  return biggestProduct;
+}
+console.log(greatestProduct(matrix));
 
 
 

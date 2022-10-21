@@ -200,33 +200,45 @@ const mtest = [
 [ 1, 20, 3, 4, 5], 
 [ 1, 20, 3, 4, 5], 
 [ 1, 20, 3, 4, 5],
-[ 1,  4, 3, 4, 5]];
+[ 1, 4, 3, 4, 5]];
 
 
 
 function greatestProduct(array) {
   let biggestProduct = 0;
-    for (let lin = 0; lin <= array.length; lin++){ //navega nas linhas
-      for (let col = 0; col <= array[lin].length; col++){ //navega nas colunas
+    for (let lin = 0; lin < array.length; lin++){ //navega nas linhas
+      //console.log(`linha ${lin}`);
+      for (let col = 0; col < array[lin].length; col++){ //navega nas colunas
         //calcula o resultado da linha
-        if (array[lin][col] && array[lin][col+1] && array[lin][col+2] && array[lin][col+3]) {
-          if ((array[lin][col]*array[lin][col+1]*array[lin][col+2]*array[lin][col+3]) >= biggestProduct){
+        //console.log(`coluna ${col}`);
+          
+          if ((array[lin][col]*array[lin][col+1]*array[lin][col+2]*array[lin][col+3]) > biggestProduct){
           biggestProduct = (array[lin][col]*array[lin][col+1]*array[lin][col+2]*array[lin][col+3]);
+          //console.log( `calculou linha ${biggestProduct}`)
+          //console.log( `elemento ${array[lin][col]}`)
           }
+          else{continue}
+          //calcula o resultado da coluna
+         }
         }
-        //calcula o resultado da coluna
-        if (array[lin][col] && array[lin+1][col] && array[lin+2][col] && array[lin+3][col]) {
-          if ((array[lin][col]*array[lin+1][col]*array[lin+2][col]*array[lin+3][col]) >= biggestProduct){
-            biggestProduct = (array[lin][col]*array[lin+1][col]*array[lin+2][col]*array[lin+3][col]);
-          }
+    for (let lin2 = 0; lin2 < array.length; lin2++){ //navega nas linhas
+      //console.log(`linha ${lin2}`);
+      for (let col2 = 0; col2 < array[lin2].length; col2++){ //navega nas colunas  
+        if ((array[lin2]?.[col2] && array[lin2+1]?.[col2] && array[lin2+2]?.[col2] && array[lin2+3]?.[col2])){
+        if ((array[lin2][col2]*array[lin2+1][col2]*array[lin2+2][col2]*array[lin2+3][col2]) > biggestProduct){
+          biggestProduct = (array[lin2][col2]*array[lin2+1][col2]*array[lin2+2][col2]*array[lin2+3][col2]);
+          //console.log( `calculou coluna ${biggestProduct}`)
         }
+        else{continue}
+        }
+        else {continue}
       }
-    return biggestProduct;
-  }
-  //console.log(biggestProduct)
+      }
+  return biggestProduct;
+  console.log(biggestProduct)
 }
 
-console.log(greatestProduct(mtest));
+console.log(greatestProduct(matrix));
 
 
 
